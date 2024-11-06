@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <script src="../form-behaviour-tracker.js"></script>
+    </head>
+    <body>
+        <form id="form">
+            <div>
+                <input name="first_name" id="first_name" placeholder="First name">
+            </div>
+            <div>
+                <input name="card_number" id="card_number" placeholder="Card Number">
+            </div>
+            <div>
+                <input name="cvv" id="cvv" placeholder="CVV">
+            </div>
+            <div>
+                <input name="address" id="address" placeholder="Address">
+            </div>
+            <div>
+                <input name="zip_code" id="zip_code" placeholder="Zip code">
+            </div>
+            <div>
+                <input name="other" id="other" placeholder="Other not important">
+            </div>
+            <div>
+                <button type="button" id="resetBtn">Reset</button>
+                <button type="submit">Submit</button> 
+            </div>
+        </form>
+        <script>
+            const trackedFields = ["first_name", "card_number", "cvv", "address", "zip_code"];
+            const tracker = new FormTracker(trackedFields);
+
+            function getResults(ev) {
+                ev.preventDefault()
+                const results = tracker.getResultsJSON();
+                console.log("Results", results)
+            }
+            function resetForm() {
+                tracker.resetData()
+                console.log("form data reset")
+            }
+            const resetBtn = document.getElementById("resetBtn");
+            resetBtn.addEventListener("click", resetForm)
+
+            const form = document.getElementById("form");
+            form.addEventListener("submit", getResults);
+        </script>
+    </body>
+</html>
