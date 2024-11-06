@@ -55,6 +55,11 @@ class FormTracker {
         return encodedData;
     }
 
+    // Get results in JSON format
+    getResultsJSON() {
+        return this.data
+    }
+
     // Reset data if needed
     resetData() {
         this.data = {
