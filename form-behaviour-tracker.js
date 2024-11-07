@@ -1,18 +1,20 @@
-// Add CSS for autofill detection for Firefox and Chrome (inject or add to stylesheet)
-const style = document.createElement('style');
-style.innerHTML = `
-    input:-webkit-autofill {
-        animation: autofill-detection 0.001s forwards;
-    }
-    input:-moz-autofill {
-        animation: autofill-detection 0.001s forwards;
-    }
-    @keyframes autofill-detection {
-        from {}
-        to {}
-    }
-`;
-document.head.appendChild(style);
+if (typeof document !== 'undefined') {
+    // Add CSS for autofill detection for Firefox and Chrome (inject or add to stylesheet)
+    const style = document.createElement('style');
+    style.innerHTML = `
+        input:-webkit-autofill {
+            animation: autofill-detection 0.001s forwards;
+        }
+        input:-moz-autofill {
+            animation: autofill-detection 0.001s forwards;
+        }
+        @keyframes autofill-detection {
+            from {}
+            to {}
+        }
+    `;
+    document.head.appendChild(style);
+}
 
 class FormTracker {
     constructor(targetFields, formId) {
